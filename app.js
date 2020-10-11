@@ -19,7 +19,7 @@ app.use(express.static(publicPath));
 app.set('view engine', 'hbs');
 
 app.get('/', (req, res) => {
-  res.render('tictactoe');
+  res.render('doge');
 });
 
 app.listen(port, () => {

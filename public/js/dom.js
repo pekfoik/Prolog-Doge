@@ -56,7 +56,7 @@ var pl;
 					thread.throw_error( pl.error.type( "HTMLObject", elem, atom.indicator ) );
 				} else if( !pl.type.is_atom( type ) ) {
 					thread.throw_error( pl.error.type( "atom", type, atom.indicator ) );
-				} else { //Changed here from "else if( !pl.type.is_variable( goal ) ) "
+				} else {
 					if( elem.object.tau_events && elem.object.tau_events[type.id] ) {
 						var event = elem.object.tau_events[type.id];
 						for( var i = 0; i < event.length; i++ ) {
@@ -109,7 +109,7 @@ var pl;
 					thread.throw_error( pl.error.type( "atomic", val, atom.indicator ) );
 				} else {
 					if( event.event !== null && event.event[prop.id] ) {
-						var value = event.event[prop.id].id;//changed here (Future me - remove .id)
+						var value = event.event[prop.id];
 						value = isNaN(value) ? new pl.type.Term( value, [] ) : new pl.type.Num( value );
 						thread.prepend( [new pl.type.State( point.goal.replace( new pl.type.Term( "=", [value, val] ) ), point.substitution, point )] );
 					}
@@ -697,7 +697,7 @@ var pl;
 			},
 			
 			// has_class/2
-			"has_class/2": function( thread, point, atom ) { //Changed here from "hasClass"
+			"has_class/2": function( thread, point, atom ) {
 				var element = atom.args[0], name = atom.args[1];
 				if( pl.type.is_variable( element ) ) {
 					thread.throw_error( pl.error.instantiation( atom.indicator ) );
